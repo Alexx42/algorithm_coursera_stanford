@@ -109,6 +109,15 @@ class Heap {
 			return true;
 		}
 
+		bool insert(T x) {
+			if (find(x) != -1) {
+				return false;
+			}
+			heap_.push_back(x);
+			heapify_up(heap_.size() - 1);
+			return true;
+		}
+
 		const void print_heap() const{
 			REP(0, heap_.size()) {
 				write(heap_[i], " \n"[i == heap_.size() - 1]);
@@ -130,6 +139,8 @@ void test_case() {
 	heap.init_heap(a, n);
 	heap.print_heap();
 	heap.remove(1);
+	heap.print_heap();
+	heap.insert(42);
 	heap.print_heap();
 }
 
