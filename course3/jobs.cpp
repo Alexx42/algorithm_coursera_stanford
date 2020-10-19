@@ -21,16 +21,23 @@ void read(Args && ...args) {
 }
 
 bool cmp(pi p1, pi p2) {
+		float dp1 = p1.first / (float)p1.second;
+		float dp2 = p2.first / (float)p2.second;
+		return dp1 > dp2;
+}
+
+bool cmp_diff(pi p1, pi p2) {
 		int dp1 = p1.first - p1.second;
 		int dp2 = p2.first - p2.second;
-		return dp1 != dp2 ? dp1 > dp2 : p1.first > p2.first;
+
+		return dp1 == dp2 ? p1.first > p2.first : dp1 > dp2;
 }
 
 void test_case() {
 		int n;
 		string line;
 		vector<pi> desc;
-		ifstream f("input.txt");
+		ifstream f("jobs.txt");
   
 		getline(f, line);
 		n = stoi(line);
